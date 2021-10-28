@@ -1,4 +1,5 @@
 import random
+# global variables for everyone to use
 c1_average = 9
 c1_sd = 3
 c2_average = 7
