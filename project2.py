@@ -15,7 +15,7 @@ def eGreedy(e: int) -> float:
     e = e/100  # makes e into a decimal value
     total_happiness = 0  # tracks the total of happiness to be returned
 
-    # track the happiness value for current iteration
+    # track the happiness value for current iteration, for now... lets calculate for the first 3 days
     c1_happiness = random.normalvariate(c1_average, c1_sd)
     c2_happiness = random.normalvariate(c2_average, c2_sd)
     c3_happiness = random.normalvariate(c3_average, c3_sd)
