@@ -81,7 +81,7 @@ def eGreedy(e: int) -> float:
                 c3_happy_total += c3_happiness  # add this trip to the cafeteria total
                 c3_average_happiness = c3_happy_total / c3_times  # calculate average happiness for c3
                 total_happiness += c3_happiness  # add happiness value for trip to total
-    return total_happiness
+    return int(total_happiness)
 
 
 
