@@ -13,13 +13,13 @@ def exploreOnly():
     # visit each cafeteria the same number of times.
     # calculate happiness based on normal distribution with certain mean and standard deviation
     for i in range(100):
-        happiness = random.normalvariate(9, 3)
+        happiness = random.normalvariate(c1_average, c1_sd)
         total = total + happiness
     for i in range(100):
-        happiness = random.normalvariate(7, 5)
+        happiness = random.normalvariate(c2_average, c2_sd)
         total = total + happiness
     for i in range(100):
-        happiness = random.normalvariate(11, 7)
+        happiness = random.normalvariate(c3_average, c3_sd)
         total = total + happiness
     # return the sum of happiness value generated.
     return int(total)
