@@ -7,11 +7,27 @@ c2_sd = 5
 c3_average = 11
 c3_sd = 7
 
+def exploreOnly():
+    total = 0
+    #visit each cafeteria the same number of times.
+    #calculate happiness based on normal distribution with certain mean and standard deviation
+    for i in range(100):
+        Happiness = random.normalvariate(9, 3)
+        total = total + Happiness
+    for i in range(100):
+        Happiness = random.normalvariate(7, 5)
+        total = total + Happiness
+    for i in range(100):
+        Happiness = random.normalvariate(11, 7)
+        total = total + Happiness
+    #return the sum of happiness value generated.
+    return int(total)
+
 
 # eGreedy(e) takes in a percent, e, and calculates the total happiness value when
 # you go to a random cafeteria e% of the time and your favorite the rest of the time.
 # Returns the total happiness within the trip
-def eGreedy(e: int) -> int:
+def eGreedy(e: int) -> float:
     e = e/100  # makes e into a decimal value
     total_happiness = 0  # tracks the total of happiness to be returned
 
@@ -81,7 +97,7 @@ def eGreedy(e: int) -> int:
                 c3_happy_total += c3_happiness  # add this trip to the cafeteria total
                 c3_average_happiness = c3_happy_total / c3_times  # calculate average happiness for c3
                 total_happiness += c3_happiness  # add happiness value for trip to total
-    return int(total_happiness)  # change float to int to make it easier to work with
+    return int(total_happiness)
 
 
 
