@@ -11,7 +11,7 @@ c3_sd = 7
 # eGreedy(e) takes in a percent, e, and calculates the total happiness value when
 # you go to a random cafeteria e% of the time and your favorite the rest of the time.
 # Returns the total happiness within the trip
-def eGreedy(e: int) -> float:
+def eGreedy(e: int) -> int:
     e = e/100  # makes e into a decimal value
     total_happiness = 0  # tracks the total of happiness to be returned
 
@@ -81,7 +81,7 @@ def eGreedy(e: int) -> float:
                 c3_happy_total += c3_happiness  # add this trip to the cafeteria total
                 c3_average_happiness = c3_happy_total / c3_times  # calculate average happiness for c3
                 total_happiness += c3_happiness  # add happiness value for trip to total
-    return int(total_happiness)
+    return int(total_happiness)  # change float to int to make it easier to work with
 
 
 
