@@ -105,6 +105,7 @@ def eGreedy(e: int) -> float:
 
     for i in range(297):  # next 297 days...
         r = random.random()  # generates random float from 0 to 1
+
         if r < e:  # pick random cafeteria
             cafeteria = random.randint(1, 3)  # generate random int 1, 2, or 3
             if cafeteria == 1:  # if c1
@@ -125,6 +126,7 @@ def eGreedy(e: int) -> float:
                 c3_happy_total += c3_happiness  # add this trip to the cafeteria total
                 c3_average_happiness = c3_happy_total / c3_times  # calculate average happiness for c3
                 total_happiness += c3_happiness  # add happiness value for trip to total
+
         else:  # go to favorite
             # like c1 the best
             if c1_average_happiness > c2_average_happiness and c1_average_happiness > c3_average_happiness:
@@ -147,6 +149,7 @@ def eGreedy(e: int) -> float:
                 c3_happy_total += c3_happiness  # add this trip to the cafeteria total
                 c3_average_happiness = c3_happy_total / c3_times  # calculate average happiness for c3
                 total_happiness += c3_happiness  # add happiness value for trip to total
+
     return int(total_happiness)
 
 
