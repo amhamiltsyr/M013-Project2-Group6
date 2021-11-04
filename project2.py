@@ -8,6 +8,55 @@ c3_average = 11
 c3_sd = 7
 
 
+"""
+Project 2
+Exploit Only Part
+
+Name: Ruihao Zhang
+Group: 6
+
+Basic idea: use python "normalvariate" function to calculate the normal
+             distribution, and give the final total happiness value.
+Step: first find out the ND of three each restaurant, sort them, then choose the one with the
+      greatest for the remain 297 times.
+
+input: C1 ( 9, 3),
+       C2 (7, 5),
+       C3 (11, 7)
+
+"""
+
+
+def exploitOnly():
+    average = [c1_average, c2_average, c3_average]
+    standardDev = [c1_sd, c2_sd, c3_sd]
+    times = 300    # total 300 times
+    totalHappiness = 0  # final value to return
+
+    # create a list to find the best Happiness value
+    firstThreeDays = []
+    for i in range(3):
+        firstThreeDays.append(random.normalvariate(average[i], standardDev[i]))
+        times -= 1                          # 300 minus 3
+
+    # find the best cafeteria
+    best = 0
+    for i in range(len(firstThreeDays)):
+        if firstThreeDays[i] > firstThreeDays[best]:
+            best = i
+
+    # first three times happiness value
+    totalHappiness = sum(firstThreeDays)
+
+    # with remaining 297 times
+    while times != 0:
+        totalHappiness += random.normalvariate(average[best], standardDev[best])
+        times -= 1
+
+    return int(totalHappiness)  # cast to int for ease of simulation
+
+
+# exploreOnly() returns the total happiness value if you went to each cafeteria 100 times during the 300 day trip
 def exploreOnly():
     total = 0
     # visit each cafeteria the same number of times.
