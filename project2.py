@@ -53,7 +53,7 @@ def exploitOnly():
         totalHappiness += random.normalvariate(average[best], standardDev[best])
         times -= 1
 
-    return int(totalHappiness)  # cast to int for ease of simulation
+    return int(totalHappiness)  # cast to int for ease of simulation.py
 
 
 # exploreOnly() returns the total happiness value if you went to each cafeteria 100 times during the 300 day trip
@@ -151,6 +151,5 @@ def eGreedy(e: int) -> float:
                 total_happiness += c3_happiness  # add happiness value for trip to total
 
     return int(total_happiness)
-
 
 

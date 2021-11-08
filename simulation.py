@@ -7,11 +7,12 @@ c2_sd = 5
 c3_average = 11
 c3_sd = 7
 
+
 def exploitOnly():
     average = [c1_average, c2_average, c3_average]
     standardDev = [c1_sd, c2_sd, c3_sd]
     times = 300    # total 300 times
-    totalHappiness = 0  #final value to return
+    totalHappiness = 0  # final value to return
 
     # create a list to find the best Happiness value
     firstThreeDays = []
@@ -35,6 +36,7 @@ def exploitOnly():
 
     return int(totalHappiness)  # cast to int for ease of simulation
 
+
 def exploreOnly():
     total = 0
     # visit each cafeteria the same number of times.
@@ -51,8 +53,9 @@ def exploreOnly():
     # return the sum of happiness value generated.
     return int(total)
 
-def eGreedy(e: int) -> float:
-    e = e/100  # makes e into a decimal value
+
+def eGreedy(p_e: int) -> float:
+    p_e = p_e/100  # makes e into a decimal value
     total_happiness = 0  # tracks the total of happiness to be returned
 
     # track the happiness value for current iteration, for now... lets calculate for the first 3 days
@@ -79,7 +82,7 @@ def eGreedy(e: int) -> float:
 
     for i in range(297):  # next 297 days...
         r = random.random()  # generates random float from 0 to 1
-        if r < e:  # pick random cafeteria
+        if r < p_e:  # pick random cafeteria
             cafeteria = random.randint(1, 3)  # generate random int 1, 2, or 3
             if cafeteria == 1:  # if c1
                 c1_happiness = random.normalvariate(c1_average, c1_sd)  # find happiness for trip
@@ -123,8 +126,9 @@ def eGreedy(e: int) -> float:
                 total_happiness += c3_happiness  # add happiness value for trip to total
     return int(total_happiness)
 
-def simulation(trial: int, e: float):
-    optimumHappiness = 3300
+
+def simulation(trial: int, e: int):
+    optimumHappiness = max(c1_average, c2_average, c3_average)*300
     exploitResults = 0
     exploreResults = 0
     egreedyResults = 0
@@ -144,27 +148,29 @@ def simulation(trial: int, e: float):
     egreedyRegret = optimumHappiness - egreedyAverage
 
     print(
-    "Optimum Happiness:" + "3300" + "\n"
+    "Optimum Happiness:" + str(optimumHappiness) + "\n"
     "-----------------------" + "\n"
-    "Exploit Expected Hapiness:" + "3294" + "\n"
-    "Exploit Average Hapiness:" + str(exploitAverage) +  "\n"
+    "Exploit Expected Hapiness:" + str(c1_average+c2_average+c3_average+max(c1_average, c2_average, c3_average)*297) + "\n"
+    "Exploit Average Hapiness:" + str(exploitAverage) + "\n"
     "\n"
-    "Exploit Expected Regret:"  +   "6" + "\n"
+    "Exploit Expected Regret:" + str(optimumHappiness-(c1_average+c2_average+c3_average+max(c1_average, c2_average, c3_average)*297)) +
+    "\n"
     "Exploit Average Regret:" + str(exploitRegret) + "\n"
-    "---------------------" + "\n"
-    "Explore Expected Hapiness:" "2700" + "\n"
+    "---------------------" + "\n" +
+    "Explore Expected Hapiness:" + str(c1_average*100+c2_average*100+c3_average*100) + "\n"
     "Explore Average Hapiness:" + str(exploreAverage) + "\n"
     "\n"
-    "Explore Expected Regret:" + "600" +"\n"
+    "Explore Expected Regret:" + str(optimumHappiness -(c1_average*100+c2_average*100+c3_average*100)) + "\n"
     "Explore Average Regret:" + str(exploreRegret) + "\n"
     "---------------------" + "\n"
-    "eGreedy Expected Hapiness:" + "3228" +"\n"
+    "eGreedy Expected Hapiness:" + str((e/100/3)*300*c1_average+(e/100/3)*300*c2_average+(e/100/3)*300*c3_average+(1-e/100)*300*max(c1_average, c2_average, c3_average)) + "\n"
     "eGreedy Average Hapiness:" + str(egreedyAverage) + "\n"
     "\n"
-    "eGreedy Expected Regret:" "72" +"\n"
+    "eGreedy Expected Regret:" + str(optimumHappiness-((e/100/3)*300*c1_average+(e/100/3)*300*c2_average+(e/100/3)*300*c3_average+(1-e/100)*300*max(c1_average, c2_average, c3_average))) + "\n"
     "eGreedy Average Regret:" + str(egreedyRegret)
     )
 
-dog = int(input("Insert number of trials:"))
-e=12
-simulation(dog,e)
+
+question = int(input("Insert number of trials:"))
+pass_in_e = 12
+simulation(question, pass_in_e)
