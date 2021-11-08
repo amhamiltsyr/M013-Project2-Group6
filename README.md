@@ -9,4 +9,4 @@ To run our project: run stimulation.py
   
   If you would like to change e, change value of pass_in_e on line 175
   
-  If you would like to change the cafeteria values, change the global variable on the top of stimulation.py
+  If you would like to change the cafeteria values, change the global variables on the top of stimulation.py
